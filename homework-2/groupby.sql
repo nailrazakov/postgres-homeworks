@@ -21,6 +21,7 @@ ORDER BY COUNT(*) DESC;
 -- 5. суммарный вес заказов (в которых известен регион) по странам, но вывести только те результаты, где суммарный вес на страну больше 2750. Отсортировать по убыванию суммарного веса (см таблицу orders, колонки ship_region, ship_country, freight)
 SELECT DISTINCT ship_country, SUM(freight)
 FROM orders
+WHERE ship_region IS NOT NULL
 GROUP BY ship_country
 HAVING SUM(freight) > 2750
 ORDER BY SUM(freight) DESC;
